@@ -25,7 +25,7 @@ class DurationUnitFormat {
 
   formatToParts (value) {
     // Extract all the parts that are actually used from the localised format
-    const parts = new IntlMessageFormat(this._format, this.locales).formatToParts({
+    const parts = new IntlMessageFormat.default(this._format, this.locales).formatToParts({
       second: { unit: DurationUnitFormat.units.SECOND },
       seconds: { unit: DurationUnitFormat.units.SECOND },
       minute: { unit: DurationUnitFormat.units.MINUTE },
@@ -77,7 +77,7 @@ class DurationUnitFormat {
       }
       if (text === '{unit}') {
         const message = this.formatUnits[unit] || '{value}';
-        const formattedUnit = new IntlMessageFormat(message, this.locales).format({ value: number });
+        const formattedUnit = new IntlMessageFormat.default(message, this.locales).format({ value: number });
         return { type: 'unit', value: formattedUnit };
       }
       if (text) {

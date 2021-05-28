@@ -9,10 +9,24 @@ export default [
       filesize({ showMinifiedSize: false }),
     ],
     output: [{
-      file: 'dist/cjs/duration-unit-format.cjs.js',
+      file: 'dist/cjs/duration-unit-format.cjs.cjs',
       format: 'cjs',
     }, {
       file: 'dist/esm/duration-unit-format.esm.js',
+      format: 'esm',
+    }],
+  },
+  {
+    input: 'polyfill.js',
+    external: Object.keys(pkg.peerDependencies),
+    plugins: [
+      filesize({ showMinifiedSize: false }),
+    ],
+    output: [{
+      file: 'dist/cjs/polyfill.cjs',
+      format: 'cjs',
+    }, {
+      file: 'dist/esm/polyfill.js',
       format: 'esm',
     }],
   },
