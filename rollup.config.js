@@ -16,4 +16,18 @@ export default [
       format: 'esm',
     }],
   },
+  {
+    input: 'polyfill.js',
+    external: Object.keys(pkg.peerDependencies),
+    plugins: [
+      filesize({ showMinifiedSize: false }),
+    ],
+    output: [{
+      file: 'dist/cjs/polyfill.cjs.js',
+      format: 'cjs',
+    }, {
+      file: 'dist/esm/polyfill.esm.js',
+      format: 'esm',
+    }],
+  },
 ];
