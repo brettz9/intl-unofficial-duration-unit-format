@@ -10,8 +10,6 @@ class DurationUnitFormat {
     this.style = options.style || DurationUnitFormat.styles.LONG;
     // .isTimer determines some special behaviour, we want to keep the 0s
     this.isTimer = this.style === DurationUnitFormat.styles.TIMER;
-    // .format used `seconds`, `minutes`, `hours`, ... as placeholders
-    this._format = options.format || (this.isTimer ? '{minutes}:{seconds}' : '{seconds}');
     this._fields = options.fields || [
       'year',
       'week',
@@ -23,6 +21,8 @@ class DurationUnitFormat {
       'microsecond',
       'nanosecond',
     ];
+    // .format used `seconds`, `minutes`, `hours`, ... as placeholders
+    this._format = options.format || (this.isTimer ? '{minutes}:{seconds}' : '{seconds}');
     // How to format unit according to style
     this.formatUnits = options.formatUnits || defaultOptions.formatUnits;
     // .formatDuration determines whether we use a space or not
